@@ -31,7 +31,9 @@ sudo apt install python3-gi python3-gst-1.0 gstreamer1.0-plugins-base gstreamer1
 If you're using Wayland, you need to compile the Wayland stub before running the script:
 
 ```bash
-gcc -o wayland_stub wayland_stub.c $(pkg-config --cflags --libs wayland-client)
+gcc main.c -o main $(pkg-config --cflags --libs wayland-client)
+gcc wayland_stub.c -o wayland_stub $(pkg-config --cflags --libs wayland-client)
+gcc -c wayland_support.c $(pkg-config --cflags wayland-client)
 ```
 
 Then, make the script executable and run it:
@@ -73,7 +75,7 @@ Then run:
    To run the wallpaper automatically on startup, copy the provided desktop entry (or create one) to your autostart directory:
    
    ```bash
-   cp video-wallpaper.desktop ~/.config/autostart/
+   mkdir ~/.config/autostart/ && nano video-wallpaper.desktop && cp video-wallpaper.desktop ~/.config/autostart/
    ```
 
    *Example `video-wallpaper.desktop` content:*
