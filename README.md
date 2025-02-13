@@ -8,7 +8,7 @@ GNOME Wallpaper Engine is a lightweight, GPU-accelerated dynamic wallpaper solut
 - **Automatic Scaling:** Detects your monitor's workarea and scales the video to fill your screen.
 - **GPU-Accelerated:** Leverages GStreamer for efficient, hardware-accelerated playback.
 - **Lightweight:** Designed to have minimal impact on system resources.
-- **Wayland Support:** Yes!! You have heard that right XD, this is the first time finally adding wayland support. However... there's no multi monitor support as it only work for single monitor for now.
+- **Wayland Support:** Yes!! You have heard that right XD, this is the first time finally adding Wayland support. However... there's no multi-monitor support as it only works for a single monitor for now.
 
 ## Prerequisites
 
@@ -17,32 +17,44 @@ Before you get started, ensure you have the following installed:
 - **Python 3.x**
 - **GStreamer 1.0** (and necessary plugins, e.g., `gst-plugins-base`, `gst-plugins-good`, etc.)
 - **GTK 3**
+- **Wayland development libraries** (only needed for Wayland users)
 
 For Ubuntu/Debian systems, you can install the required packages with:
 
 ```bash
-sudo apt install python3-gi python3-gst-1.0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav gir1.2-gst-plugins-base-1.0 gir1.2-gtk-3.0
+sudo apt install python3-gi python3-gst-1.0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav gir1.2-gst-plugins-base-1.0 gir1.2-gtk-3.0 wayland-protocols libwayland-dev
 ```
 
 ## Installation
 
-1. **Clone the repository:**
+### For Wayland Users:
+If you're using Wayland, you need to compile the Wayland stub before running the script:
 
-   ```bash
-   git clone https://github.com/Techlm77/gnome-wallpaper-engine.git
-   ```
+```bash
+gcc -o wayland_stub wayland_stub.c $(pkg-config --cflags --libs wayland-client)
+```
 
-2. **Navigate into the project directory:**
+Then, make the script executable and run it:
 
-   ```bash
-   cd gnome-wallpaper-engine
-   ```
+```bash
+chmod +x wallpaper.py
+./wallpaper.py
+```
 
-3. **Make the script executable (if necessary):**
+Alternatively, you can set it up to start automatically using a `.desktop` file (see below).
 
-   ```bash
-   chmod +x wallpaper.py
-   ```
+### For X11 Users:
+No additional compilation is needed. Just make the script executable:
+
+```bash
+chmod +x wallpaper.py
+```
+
+Then run:
+
+```bash
+./wallpaper.py
+```
 
 ## Usage
 
