@@ -8,6 +8,7 @@ GNOME Wallpaper Engine is a lightweight, GPU-accelerated dynamic wallpaper solut
 - **Automatic Scaling:** Detects your monitor's workarea and scales the video to fill your screen.
 - **GPU-Accelerated:** Leverages GStreamer for efficient, hardware-accelerated playback.
 - **Lightweight:** Designed to have minimal impact on system resources.
+- **Wayland Support:** Yes!! You have heard that right XD, this is the first time finally adding wayland support. However... there's no multi monitor support as it only work for single monitor for now.
 
 ## Prerequisites
 
